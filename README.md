@@ -3,6 +3,8 @@ Steam AppManifest generator
 
 This is a short python script that tricks Steam for Linux into downloading non-Linux apps.
 
+Note: Steam will not run apps that don't have Linux support, but it will still download the data.
+
 ## How it works
 
 When you tell Steam to download an app, it first checks whether a Linux version exists. If it doesn't exist, it tells you so ("[App] is not available on your current platform.") and doesn't do anything. If it exists, it creates an `appmanifest` file (which contains game meta-data: name, size on hard-disk, time of last update, etc), and then proceeds to download it.
