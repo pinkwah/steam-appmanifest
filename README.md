@@ -38,3 +38,9 @@ I created the python script for ease of use. However, it is also possible to cre
 ```
 
 Save and restart Steam.
+
+## Disclaimer
+
+This method isn't guaranteed to work. I've tested it on several games and they all seemed to download fine except for Civilization V, which just made an empty directory.
+
+Steam won't download apps you don't own.
