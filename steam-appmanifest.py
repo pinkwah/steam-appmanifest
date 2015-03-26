@@ -23,7 +23,7 @@ import re
 # Change this to where your SteamApps folder is located.
 # The default ('~/.steam/steam/SteamApps') should be valid for all Linux installations.
 # "~/.steam/steam" is a symlink to "$XDG_DATA_HOME/Steam" (normally "~/.local/share/Steam")
-SteamApps = path.expanduser('~/.steam/steam/SteamApps')
+SteamApps = path.expanduser('~/.steam/steam/steamapps')
 
 class DlgToggleApp(Gtk.Dialog):
 
@@ -33,7 +33,7 @@ class DlgToggleApp(Gtk.Dialog):
 
         label0 = Gtk.Label("Install \""+ name +"\"?")
         label1 = Gtk.Label("appmanifest_"+ str(appid) +".acf")
-            
+
         if exists:
             self.set_title("appmanifest already exists")
             self.add_buttons( "Cancel", Gtk.ResponseType.CANCEL,
@@ -63,7 +63,7 @@ class DlgManual(Gtk.Dialog):
         hbox = Gtk.Box()
         hbox.pack_start(label, False, False, True)
         hbox.pack_start(self.entry, False, False, True)
-        
+
         self.get_content_area().add(hbox)
         self.show_all()
 
@@ -98,7 +98,7 @@ class AppManifest(Gtk.Window):
 
         # third row
         self.game_liststore = Gtk.ListStore(bool, int, str)
- 
+
         row2_treeview = Gtk.TreeView(model=self.game_liststore)
 
         row2_renderer_text = Gtk.CellRendererText()
