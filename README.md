@@ -19,7 +19,7 @@ You need Python 3 and Python 3 GObject Bindings for the script to run.
 * ArchLinux and derivatives can install `python` and `python-gobject`.
 * Fedora should have everything installed by default.
 
-After you have installed these, [download `steam-appmanifest.py`.](https://raw2.github.com/dotfloat/steam-appmanifest/master/steam-appmanifest.py) Make the file executable (`$ chmod +x steam-appmanifest.py`) and start it. A dialog should appear. Type in your Steam Community ID in the top textbox and hit `Refresh`. Make sure your profile is publicly viewable. A list of titles should appear. Install the apps that you want by clicking the checkbox to the left of the Title (and AppID). After you finish, restart Steam.
+After you have installed these, [download `steam-appmanifest.py`.](https://raw.github.com/dotfloat/steam-appmanifest/master/steam-appmanifest.py) Make the file executable (`$ chmod +x steam-appmanifest.py`) and start it. A dialog should appear. Type in your Steam Community ID in the top textbox and hit `Refresh`. Make sure your profile is publicly viewable. A list of titles should appear. Install the apps that you want by clicking the checkbox to the left of the Title (and AppID). After you finish, restart Steam.
 
 ## Manual
 
