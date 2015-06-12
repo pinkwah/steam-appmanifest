@@ -152,7 +152,7 @@ class AppManifest(Gtk.Window):
             if m:
                 appids.append( int( m.groups(1)[0] ) )
 
-        url = "http://steamcommunity.com/id/"+ self.steamid.get_text() +"/games?xml=1"
+        url = "http://steamcommunity.com/id/"+ self.steamid.get_text() +"/games?tab=all&xml=1"
         html = urlopen(url)
         tree = ElementTree()
         tree.parse(html)
