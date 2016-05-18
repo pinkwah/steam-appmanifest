@@ -133,8 +133,8 @@ class AppManifest(Gtk.Window):
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
 
         vbox.pack_start(row0, False, False, True)
-        vbox.pack_start(row1, True, True, 0)
-        vbox.pack_start(row2, False, False, 0)
+        vbox.pack_start(row1, False, False, 0)
+        vbox.pack_start(row2, True, True, 0)
         vbox.pack_start(row3, False, False, 0)
 
         self.add(vbox)
