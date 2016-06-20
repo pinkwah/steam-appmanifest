@@ -57,14 +57,25 @@ class DlgManual(Gtk.Dialog):
 
         self.set_default_size(200, 50)
 
-        label = Gtk.Label("Game AppID:")
-        self.entry = Gtk.Entry()
+        appidlabel = Gtk.Label("Game AppID:")
+        self.appidentry = Gtk.Entry()
 
-        hbox = Gtk.Box()
-        hbox.pack_start(label, False, False, True)
-        hbox.pack_start(self.entry, False, False, True)
+        appidhbox = Gtk.HBox()
+        appidhbox.pack_start(appidlabel, False, False, True)
+        appidhbox.pack_start(self.appidentry, False, False, True)
 
-        self.get_content_area().add(hbox)
+        instdirlabel = Gtk.Label("Game directory name:")
+        self.instdirentry = Gtk.Entry()
+
+        instdirhbox = Gtk.HBox()
+        instdirhbox.pack_start(instdirlabel, False, False, True)
+        instdirhbox.pack_start(self.instdirentry, False, False, True)
+
+        vbox = Gtk.VBox()
+        vbox.pack_start(appidhbox, False, False, True)
+        vbox.pack_start(instdirhbox, False, False, True)
+
+        self.get_content_area().add(vbox)
         self.show_all()
 
 class AppManifest(Gtk.Window):
@@ -176,7 +187,7 @@ class AppManifest(Gtk.Window):
             if exists:
                 remove(p)
             else:
-                self.addGame( appid )
+                self.addGame( appid, name )
         dialog.destroy()
 
         self.refreshSingleRow(path)
@@ -186,7 +197,7 @@ class AppManifest(Gtk.Window):
         response = dialog.run()
 
         if response == Gtk.ResponseType.OK:
-            self.addGame( int(dialog.entry.get_text()) )
+            self.addGame( int(dialog.appidentry.get_text()), dialog.instdirentry.get_text() )
 
         dialog.destroy()
 
@@ -214,11 +225,11 @@ class AppManifest(Gtk.Window):
 
         return exists
 
-    def addGame(self, appid):
+    def addGame(self, appid, name):
         p = SteamApps + "/appmanifest_"+ str(appid) +".acf"
         f = open(p, 'w')
         f.write( '"AppState"\n{\n\t"appid"\t"'+ str(appid) +'"\n\t"Universe"'+
-                 '\t"1"\n\t"StateFlags"\t"1026"\n}')
+                 '\t"1"\n\t"installdir"\t"'+ name +'"\n\t"StateFlags"\t"1026"\n}')
         f.close()
 
 win = AppManifest()
