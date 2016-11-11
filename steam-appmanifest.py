@@ -228,6 +228,7 @@ class AppManifest(Gtk.Window):
     def addGame(self, appid, name):
         p = SteamApps + "/appmanifest_"+ str(appid) +".acf"
         f = open(p, 'w')
+        name = name.replace("/", "-")
         f.write( '"AppState"\n{\n\t"appid"\t"'+ str(appid) +'"\n\t"Universe"'+
                  '\t"1"\n\t"installdir"\t"'+ name +'"\n\t"StateFlags"\t"1026"\n}')
         f.close()
