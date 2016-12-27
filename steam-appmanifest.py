@@ -93,7 +93,7 @@ class AppManifest(Gtk.Window):
             exit()
 
         # first row
-        row0_label = Gtk.Label("https://steamcommunity.com/id/")
+        row0_label = Gtk.Label("https://steamcommunity.com/app/")
         self.steamid = Gtk.Entry()
         row0_btn = Gtk.Button("Refresh")
 
@@ -163,7 +163,7 @@ class AppManifest(Gtk.Window):
             if m:
                 appids.append( int( m.groups(1)[0] ) )
 
-        url = "http://steamcommunity.com/id/"+ self.steamid.get_text() +"/games?tab=all&xml=1"
+        url = "http://steamcommunity.com/app/"+ self.steamid.get_text() +"/games?tab=all&xml=1"
         html = urlopen(url)
         tree = ElementTree()
         tree.parse(html)
