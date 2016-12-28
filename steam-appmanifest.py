@@ -15,10 +15,13 @@
 
 from gi.repository import Gtk
 from xml.etree.ElementTree import ElementTree
-from urllib.request import urlopen
 from os import path, listdir, remove, system, popen
 from os.path import isfile, join
 import re
+try:
+    from urllib import urlopen
+except ImportError:
+    from urllib.request import urlopen
 
 # Change this to where your SteamApps folder is located.
 # The default ('~/.steam/steam/SteamApps') should be valid for all Linux installations.

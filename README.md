@@ -11,16 +11,36 @@ When you tell Steam to download an app, it first checks whether a Linux version 
 
 I found that if the `appmanifest` file is created manually, Steam will still download the app regardless of platform. There are a minimum of three variables that have to be set in order for this to work. The first is the `AppID` -- the ID of the app you're trying to download. The second is the `Universe`. [Refer to the Valve Developer Wiki for more info.](https://developer.valvesoftware.com/wiki/SteamID#Universes_Available_for_Steam_Accounts) The last and the most magical one is the `StateFlags`. Setting this to `1026` tells Steam that an update is required and that the update has been started previously. More info on `StateFlags` can be found [here](https://github.com/lutris/lutris/blob/master/docs/steam.rst). (Thanks to strycore for pointing this out.)
 
-## Using the script
 
-You need Python 3 and Python 3 GObject Bindings for the script to run.
+## Installation Prerequisites
+
+You need Python 2 or 3 and GObject Bindings for the script to run.
 
 * Debian and Ubuntu (and derivatives) don't have these installed by default. The packages are `python3` and `python3-gi`.
 * ArchLinux and derivatives can install `python` and `python-gobject`.
 * Fedora should have everything installed by default.
 * Mac OS requires python3 bindings for GTK3, which can be installed with `brew install pygobject3 --with-python3`.
 
-After you have installed these, [download `steam-appmanifest.py`.](https://raw.github.com/dotfloat/steam-appmanifest/master/steam-appmanifest.py) Make the file executable (`$ chmod +x steam-appmanifest.py`) and start it. A dialog should appear. Type in your Steam Community ID in the top textbox and hit `Refresh`. Make sure your profile is publicly viewable. A list of titles should appear. Install the apps that you want by clicking the checkbox to the left of the Title (and AppID). After you finish, restart Steam.
+## Installation
+
+Install via pip, `--user` can be added to install the script under `~/.local/bin` instead of a system install. Be sure to add <kbd>~/.local/bin</kbd> to your PATH!.
+```
+    pip3 install git+https://github.com/dotfloat/steam-appmanifest.git
+    pip install git+https://github.com/dotfloat/steam-appmanifest.git
+```
+
+Alternatively, [download `steam-appmanifest.py` directly,](https://raw.github.com/dotfloat/steam-appmanifest/master/steam-appmanifest.py) Make the file executable (`$ chmod +x steam-appmanifest.py`) and run it `./steam-appmanifest.py`.
+
+## Usage
+
+Run the script
+
+ - `steam-appmanifest.py` (System Install),
+ - `./steam-appmanifest.py` (Direct Download) or
+ - `~/.local/bin/steam-appmanifest.py` (From Pip or add to your PATH).
+
+
+A dialog should appear. Type in your Steam Community ID in the top textbox and hit `Refresh`. Make sure your profile is publicly viewable. A list of titles should appear. Install the apps that you want by clicking the checkbox to the left of the Title (and AppID). After you finish, restart Steam.
 
 ## Manual
 
