@@ -34,10 +34,15 @@ I created the python script for ease of use. However, it is also possible to cre
 ```
     "AppState"
     {
-      "AppID"  "APPID"
-      "Universe" "1"
-      "installdir" "APPNAME"
-      "StateFlags" "1026"
+        "appid"		"APPID"
+        "Universe"		"1"
+        "name"		"APPNAME"
+        "StateFlags"		"1026"
+        "installdir"		"APPNAME"
+        "LastUpdated"		"0"
+        "SizeOnDisk"		"0"
+        "buildid"		"0"
+        "BytesDownloaded"		"0"
     }
 ```
 
