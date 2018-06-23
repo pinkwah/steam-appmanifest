@@ -163,13 +163,22 @@ class AppManifest(Gtk.Window):
             if m:
                 appids.append( int( m.groups(1)[0] ) )
 
-        url = "http://steamcommunity.com/id/"+ self.steamid.get_text() +"/games?tab=all&xml=1"
+        # Get user's id
+        url_id64 = "http://steamcommunity.com/id/"+ self.steamid.get_text() +"/games?tab=all&xml=1"
+        html = urlopen(url_id64)
+        tree = ElementTree()
+        tree.parse(html)
+        steamID64 = tree.getiterator('steamID64')[0].text
+
+        # Get game data
+        url = "https://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=" + steamID64 + "&format=xml"
         html = urlopen(url)
         tree = ElementTree()
         tree.parse(html)
-        games_xml = tree.getiterator('game')
+        games_xml = tree.getiterator('app')
+
         for game in games_xml:
-            appid = int(game.find('appID').text)
+            appid = int(game.find('appid').text)
             name = game.find('name').text
             exists = appid in appids
             self.game_liststore.append([exists, appid, name])
